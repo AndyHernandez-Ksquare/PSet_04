@@ -1,3 +1,10 @@
+// DOM elements
+const dailyElement = document.querySelector(".daily")! as HTMLElement;
+const weeklyElement = document.querySelector(".weekly")! as HTMLElement;
+const monthlyElement = document.querySelector(".monthly")! as HTMLElement;
+
+// let hello;
+
 // import { Response } from "./interface/interface";
 interface Response {
   [index: number]: {
@@ -75,13 +82,39 @@ const setData = async (index: number, timePeriod: TimePeriod) => {
 };
 
 // Function to place all the cards using a for loop
-const placeCards = () => {
+const placeCards = (timePeriod: TimePeriod) => {
   for (let i = 0; i <= 5; i++) {
-    setData(i, "daily");
+    setData(i, timePeriod);
   }
 };
 
-placeCards();
+// Set the default values on page load to weekly data
+placeCards("weekly");
+
+// Function to remove or add active class as needed
+const setActive = (activeElement: HTMLElement): void => {
+  [dailyElement, weeklyElement, monthlyElement].forEach((element) => {
+    if (element === activeElement) {
+      element.classList.add("active");
+    } else {
+      element.classList.remove("active");
+    }
+  });
+};
+
+// Add event listeners
+dailyElement.addEventListener("click", (): void => {
+  placeCards("daily");
+  setActive(dailyElement);
+});
+weeklyElement.addEventListener("click", (): void => {
+  placeCards("weekly");
+  setActive(weeklyElement);
+});
+monthlyElement.addEventListener("click", (): void => {
+  placeCards("monthly");
+  setActive(monthlyElement);
+});
 
 // setData(0, "daily");
 
