@@ -1,88 +1,93 @@
+"use strict";
 // Matrix class representing a 2D array of numbers
-var Matrix = /** @class */ (function () {
-    function Matrix(rows, columns, elements) {
-        this.rows = rows;
-        this.columns = columns;
-        this.elements = elements;
+class Matrix {
+    _rows;
+    _columns;
+    _elements;
+    constructor(rows, columns, elements) {
+        this._rows = rows;
+        this._columns = columns;
+        this._elements = elements;
     }
-    Object.defineProperty(Matrix.prototype, "Rows", {
-        // Getter method for the number of rows
-        get: function () {
-            return this.rows;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Matrix.prototype, "Columns", {
-        // Getter method for the number of columns
-        get: function () {
-            return this.columns;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Matrix.prototype, "Elements", {
-        // Getter method for the elements of the matrix
-        get: function () {
-            return this.elements;
-        },
-        enumerable: false,
-        configurable: true
-    });
+    // Getter method for the number of rows
+    get Rows() {
+        return this._rows;
+    }
+    // Getter method for the number of columns
+    get Columns() {
+        return this._columns;
+    }
+    // Getter method for the elements of the matrix
+    get Elements() {
+        return this._elements;
+    }
     // Setter method to set the elemetns of the matrix at the position (i,j)
-    Matrix.prototype.setElements = function (i, j, value) {
+    setElements(i, j, value) {
         // Checks if the given row and column index (i, j) is a valid index for the matrix.
-        if (i < 0 || i >= this.rows || j < 0 || j >= this.columns) {
+        if (i < 0 || i >= this._rows || j < 0 || j >= this._columns) {
             // Throws an error if the index is out of bounds.
-            throw new Error("Invalid position (".concat(i, ", ").concat(j, ")"));
+            throw new Error(`Invalid position (${i}, ${j})`);
         }
-        this.elements[i][j] = value;
-    };
+        this._elements[i][j] = value;
+    }
     // Method to add two matrices
-    Matrix.prototype.add = function (otherMatrix) {
+    add(otherMatrix) {
         // Check if matrices are not of the same size
-        if (this.rows !== otherMatrix.rows ||
-            this.columns !== otherMatrix.columns) {
+        if (this._rows !== otherMatrix._rows ||
+            this._columns !== otherMatrix._columns) {
             // If not log "NOOP" and return the "this" object
             console.log("NOOP");
             return this;
         }
         // Create a new 2D array to hold the result of the addition
-        var resultElements = [];
+        const resultElements = [];
         // Loop through each element of the matrix and add the corresponding element of the other matrix
-        for (var i = 0; i < this.rows; i++) {
+        for (let i = 0; i < this._rows; i++) {
             resultElements.push([]);
-            for (var j = 0; j < this.columns; j++) {
-                resultElements[i][j] = this.elements[i][j] + otherMatrix.elements[i][j];
+            for (let j = 0; j < this._columns; j++) {
+                resultElements[i][j] =
+                    this._elements[i][j] + otherMatrix._elements[i][j];
             }
         }
         // Create a new matrix with the result of the addition and return it
-        return new Matrix(this.rows, this.columns, resultElements);
-    };
+        return new Matrix(this._rows, this._columns, resultElements);
+    }
     // Method to multiply two matrices
-    Matrix.prototype.multiply = function (otherMatrix) {
+    multiply(otherMatrix) {
         // Check if the number of columns in the first matrix matches the number of rows in the second matrix
-        if (this.columns !== otherMatrix.rows) {
+        if (this._columns !== otherMatrix._rows) {
             // If not log "NOOP" and return the "this" object
             console.log("NOOP");
-            return this;
+            // Return a falsy value
+            return 0;
         }
         // Create a new 2D array to hold the result of the multiplication
-        var resultElements = [];
+        const resultElements = [];
         // Loop through each element of the result matrix and calculate its value by multiplying...
         //  the corresponding elements from the two matrices
-        for (var i = 0; i < this.rows; i++) {
+        for (let i = 0; i < this._rows; i++) {
             resultElements.push([]);
-            for (var j = 0; j < otherMatrix.columns; j++) {
-                var sum = 0;
-                for (var k = 0; k < this.columns; k++) {
-                    sum += this.elements[i][k] * otherMatrix.elements[k][j];
+            for (let j = 0; j < otherMatrix._columns; j++) {
+                let sum = 0;
+                for (let k = 0; k < this._columns; k++) {
+                    sum += this._elements[i][k] * otherMatrix._elements[k][j];
                 }
                 resultElements[i][j] = sum;
             }
         }
         // Create a new matrix with the result of the multiplication and return it
-        return new Matrix(this.rows, otherMatrix.columns, resultElements);
-    };
-    return Matrix;
-}());
+        return new Matrix(this._rows, otherMatrix._columns, resultElements);
+    }
+}
+const test = new Matrix(2, 3, [
+    [1, 2, 3],
+    [4, 5, 6],
+]);
+const test2 = new Matrix(3, 3, [
+    [7, 8, 4],
+    [9, 10, 6],
+    [11, 12, 4],
+]);
+// let resultado = test.add(test2);
+let resultado2 = test.multiply(test2);
+console.table(resultado2.Elements);

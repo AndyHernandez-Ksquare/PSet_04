@@ -144,13 +144,13 @@ body {
     flex-direction: column;
   }
   .container {
-    height: 200vh;
+    height: 220vh;
   }
 }
 
 @media (max-width: 500px) {
   .container {
     flex-direction: column;
-    height: 270vh;
+    height: 280vh;
   }
 }

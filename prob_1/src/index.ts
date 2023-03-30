@@ -57,6 +57,7 @@ const setData = async (index: number, timePeriod: TimePeriod) => {
       previousHours!.textContent = `Last week - ${data[
         index
       ].timeframes.daily.previous.toString()}`;
+
       break;
 
     // Check if time period is weekly
