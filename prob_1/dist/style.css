@@ -95,7 +95,7 @@ body {
 
 .card > section {
   background-color: #1d204b;
-  height: 75%;
+  height: 80%;
   border-radius: 5%;
 }
 .row {
@@ -119,24 +119,30 @@ body {
 
 .card-1 {
   background-color: #ff8b63;
+  background-image: url("./public/work.svg");
 }
 
 .card-2 {
   background-color: #56c2e6;
+  background-image: url("./public/game.svg");
 }
 .card-3 {
   background-color: #ff5e7d;
+  background-image: url("./public/study.svg");
 }
 
 .card-4 {
   background-color: #4bcf83;
+  background-image: url("./public/exercise.svg");
 }
 
 .card-5 {
   background-color: #7234d2;
+  background-image: url("./public/social.svg");
 }
 .card-6 {
   background-color: #f1c75b;
+  background-image: url("./public/selfcare.svg");
 }
 
 @media (max-width: 900px) {
