@@ -1,6 +1,9 @@
+// Define a custom type for pizza sizes using union type
 type PizzaSize = "Small" | "Medium" | "Large" | "ExtraLarge";
 
+// Define a class for Pizza
 class Pizza {
+  // Define protected properties for the pizza's size, extra cheese, and toppings
   protected _size: PizzaSize;
   protected _hasExtraCheese: boolean;
   protected _pepperoniToppings: number;
@@ -63,26 +66,6 @@ class Pizza {
   set pineappleToppings(pineappleToppings: number) {
     this._pineappleToppings = pineappleToppings;
   }
-
-  //   genCost(): number | string {
-  //     let cost = 0;
-  //     // switch (this._size) {
-  //     //   case "Large":
-  //     //     cost += 14;
-  //     //     cost += 3 * (this._pepperoniToppings + this._pineappleToppings);
-  //     //     cost += this._hasExtraCheese ? 6 : 0;
-  //     //     break;
-
-  //     //   case "ExtraLarge":
-  //     //     cost += 18;
-  //     //     cost += 4 * (this._pepperoniToppings + this._pineappleToppings);
-  //     //     cost += this._hasExtraCheese ? 6 : 0;
-  //     //     break;
-  //     //   default:
-  //     //     throw new Error(`Invalid pizza size: ${this._size}`);
-  //     // }
-  //     return cost;
-  //   }
 }
 
 // Small Pizza class
@@ -108,18 +91,20 @@ class SmallPizza extends Pizza {
     return this._size;
   }
   set size(size: PizzaSize) {
-    throw new Error("Cannot set the size of a small pizza");
+    // Throw error since the size of the pizza cannot be changed
+    throw new Error("Cannot set the size of the pizza");
   }
 
+  // Method to generate the cost of a small pizza
   genCost() {
     let cost = 10;
     cost += 2 * (this._pepperoniToppings + this._pineappleToppings);
     cost += this._hasExtraCheese ? 2 : 0;
     return `
 
-        ====== YOUR ORDER =======
+        ======= YOUR ORDER =======
         |Size: ${this.size}
-        |price: $${cost}
+        |Price: $${cost}
         |Ingredients: 
             Peperoni: ${this.pepperoniToppings}
             Ham: ${this.hamToppings}
@@ -129,6 +114,7 @@ class SmallPizza extends Pizza {
   }
 }
 
+// Medium pizza class
 class MediumPizza extends Pizza {
   constructor(
     hasExtraCheese: boolean,
@@ -150,9 +136,10 @@ class MediumPizza extends Pizza {
     return this._size;
   }
   set size(size: PizzaSize) {
-    throw new Error("Cannot set the size of a small pizza");
+    throw new Error("Cannot set the size of the pizza");
   }
 
+  // Method to generate the cost of a medium pizza
   genCost() {
     let cost = 12;
     cost +=
@@ -160,19 +147,20 @@ class MediumPizza extends Pizza {
     cost += this.hasExtraCheese ? 4 : 0;
     // return cost;
     return `
-  
-    ==== YOUR ORDER =======
-    |Size: ${this.size}
-    |price: $${cost}
-    |Ingredients: 
-        Peperoni: ${this.pepperoniToppings}
-        Ham: ${this.hamToppings}
-        Pineapple: ${this.pineappleToppings}
-    |Extra Chesses: ${this.hasExtraCheese ? "Yes" : "No"}
-  ==========================`;
+
+        ======= YOUR ORDER =======
+        |Size: ${this.size}
+        |Price: $${cost}
+        |Ingredients: 
+            Peperoni: ${this.pepperoniToppings}
+            Ham: ${this.hamToppings}
+            Pineapple: ${this.pineappleToppings}
+        |Extra Chesses: ${this.hasExtraCheese ? "Yes" : "No"}
+      ==========================`;
   }
 }
 
+// Large pizza class
 class LargePizza extends Pizza {
   constructor(
     hasExtraCheese: boolean,
@@ -194,9 +182,10 @@ class LargePizza extends Pizza {
     return this._size;
   }
   set size(size: PizzaSize) {
-    throw new Error("Cannot set the size of a small pizza");
+    throw new Error("Cannot set the size of the pizza");
   }
 
+  // Method to generate the cost of a large pizza
   genCost() {
     let cost = 14;
 
@@ -205,19 +194,20 @@ class LargePizza extends Pizza {
       (this._pepperoniToppings + this.hamToppings + this._pineappleToppings);
     cost += this._hasExtraCheese ? 6 : 0;
     return `
-    
-      ==== YOUR ORDER =======
-      |Size: ${this.size}
-      |price: $${cost}
-      |Ingredients: 
-          Peperoni: ${this.pepperoniToppings}
-          Ham: ${this.hamToppings}
-          Pineapple: ${this.pineappleToppings}
-      |Extra Chesses: ${this.hasExtraCheese ? "Yes" : "No"}
-    ==========================`;
+
+        ======= YOUR ORDER =======
+        |Size: ${this.size}
+        |Price: $${cost}
+        |Ingredients: 
+            Peperoni: ${this.pepperoniToppings}
+            Ham: ${this.hamToppings}
+            Pineapple: ${this.pineappleToppings}
+        |Extra Chesses: ${this.hasExtraCheese ? "Yes" : "No"}
+      ==========================`;
   }
 }
 
+// Extra large pizza class
 class ExtraLargePizza extends Pizza {
   constructor(
     hasExtraCheese: boolean,
@@ -239,9 +229,10 @@ class ExtraLargePizza extends Pizza {
     return this._size;
   }
   set size(size: PizzaSize) {
-    throw new Error("Cannot set the size of a small pizza");
+    throw new Error("Cannot set the size of the pizza");
   }
 
+  // Method to generate the cost of a extra large pizza
   genCost() {
     let cost = 18;
 
@@ -250,16 +241,16 @@ class ExtraLargePizza extends Pizza {
       (this._pepperoniToppings + this.hamToppings + this._pineappleToppings);
     cost += this._hasExtraCheese ? 6 : 0;
     return `
-        
-          ==== YOUR ORDER =======
-          |Size: ${this.size}
-          |price: $${cost}
-          |Ingredients: 
-              Peperoni: ${this.pepperoniToppings}
-              Ham: ${this.hamToppings}
-              Pineapple: ${this.pineappleToppings}
-          |Extra Chesses: ${this.hasExtraCheese ? "Yes" : "No"}
-        ==========================`;
+
+        ======= YOUR ORDER =======
+        |Size: ${this.size}
+        |Price: $${cost}
+        |Ingredients: 
+            Peperoni: ${this.pepperoniToppings}
+            Ham: ${this.hamToppings}
+            Pineapple: ${this.pineappleToppings}
+        |Extra Chesses: ${this.hasExtraCheese ? "Yes" : "No"}
+      ==========================`;
   }
 }
 
