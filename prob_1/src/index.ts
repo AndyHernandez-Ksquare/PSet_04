@@ -3,9 +3,6 @@ const dailyElement = document.querySelector(".daily")! as HTMLElement;
 const weeklyElement = document.querySelector(".weekly")! as HTMLElement;
 const monthlyElement = document.querySelector(".monthly")! as HTMLElement;
 
-// let hello;
-
-// import { Response } from "./interface/interface";
 interface Response {
   [index: number]: {
     title: string;
@@ -116,7 +113,3 @@ monthlyElement.addEventListener("click", (): void => {
   placeCards("monthly");
   setActive(monthlyElement);
 });
-
-// setData(0, "daily");
-
-// Link: https://gist.githubusercontent.com/carmandomx/b27e23332eda1d061feb3cdada26afc0/raw/438d33407442d2abbf605e87336f48a83ccff3f5/data.json

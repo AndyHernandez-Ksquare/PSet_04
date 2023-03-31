@@ -89,5 +89,7 @@ const test2 = new Matrix(3, 3, [
     [11, 12, 4],
 ]);
 // let resultado = test.add(test2);
-let resultado2 = test.multiply(test2);
-console.table(resultado2.Elements);
+const suma = test.add(test2);
+const multiplication = test.multiply(test2);
+console.table(suma.Elements);
+console.table(multiplication.Elements);
