@@ -40,6 +40,8 @@ body {
   margin-top: 1rem;
 }
 
+/* Upper */
+
 .upper-profile figure,
 .upper-profile p,
 .upper-profile h1 {
@@ -53,6 +55,8 @@ body {
   margin-top: 0.5rem;
 }
 
+/* Lower */
+
 .lower-profile {
   color: #383e75;
   margin-left: 1rem;
@@ -61,6 +65,8 @@ body {
 .lower-profile p:hover {
   cursor: pointer;
 }
+
+/* Color of active time period (daily weekly or monthly) */
 
 .active {
   color: white;
@@ -144,6 +150,8 @@ body {
   background-color: #f1c75b;
   background-image: url("./public/selfcare.svg");
 }
+
+/* Media queries */
 
 @media (max-width: 900px) {
   .row {
