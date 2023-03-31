@@ -17,23 +17,37 @@ const setData = async (index, timePeriod) => {
     const previousHours = document.querySelector(`.previous-hours-${index}`);
     // Set title
     title.textContent = data[index].title;
-    switch (timePeriod) {
-        // Check if time period is daily
-        case "daily":
-            currentHours.textContent = `${data[index].timeframes.daily.current.toString()}hrs`;
-            previousHours.textContent = `Last week - ${data[index].timeframes.daily.previous.toString()}`;
-            break;
-        // Check if time period is weekly
-        case "weekly":
-            currentHours.textContent = `${data[index].timeframes.weekly.current.toString()}hrs`;
-            previousHours.textContent = `Last week - ${data[index].timeframes.weekly.previous.toString()}`;
-            break;
-        // Check if time period is monthly
-        case "monthly":
-            currentHours.textContent = `${data[index].timeframes.monthly.current.toString()}hrs`;
-            previousHours.textContent = `Last week - ${data[index].timeframes.monthly.previous.toString()}`;
-            break;
-    }
+    currentHours.textContent = `${data[index].timeframes[timePeriod].current.toString()}hrs`;
+    previousHours.textContent = `Last week - ${data[index].timeframes[timePeriod].previous.toString()}hrs`;
+    // switch (timePeriod) {
+    //   // Check if time period is daily
+    //   case "daily":
+    //     currentHours!.textContent = `${data[
+    //       index
+    //     ].timeframes.daily.current.toString()}hrs`;
+    //     previousHours!.textContent = `Last week - ${data[
+    //       index
+    //     ].timeframes.daily.previous.toString()}hrs`;
+    //     break;
+    //   // Check if time period is weekly
+    //   case "weekly":
+    //     currentHours!.textContent = `${data[
+    //       index
+    //     ].timeframes.weekly.current.toString()}hrs`;
+    //     previousHours!.textContent = `Last week - ${data[
+    //       index
+    //     ].timeframes.weekly.previous.toString()}hrs`;
+    //     break;
+    //   // Check if time period is monthly
+    //   case "monthly":
+    //     currentHours!.textContent = `${data[
+    //       index
+    //     ].timeframes.monthly.current.toString()}hrs`;
+    //     previousHours!.textContent = `Last week - ${data[
+    //       index
+    //     ].timeframes.monthly.previous.toString()}hrs`;
+    //     break;
+    // }
 };
 // Function to place all the cards using a for loop
 const placeCards = (timePeriod) => {

@@ -45,38 +45,45 @@ const setData = async (index: number, timePeriod: TimePeriod) => {
   // Set title
   title!.textContent = data[index].title;
 
-  switch (timePeriod) {
-    // Check if time period is daily
-    case "daily":
-      currentHours!.textContent = `${data[
-        index
-      ].timeframes.daily.current.toString()}hrs`;
-      previousHours!.textContent = `Last week - ${data[
-        index
-      ].timeframes.daily.previous.toString()}`;
+  currentHours!.textContent = `${data[index].timeframes[
+    timePeriod
+  ].current.toString()}hrs`;
+  previousHours!.textContent = `Last week - ${data[index].timeframes[
+    timePeriod
+  ].previous.toString()}hrs`;
 
-      break;
+  // switch (timePeriod) {
+  //   // Check if time period is daily
+  //   case "daily":
+  //     currentHours!.textContent = `${data[
+  //       index
+  //     ].timeframes.daily.current.toString()}hrs`;
+  //     previousHours!.textContent = `Last week - ${data[
+  //       index
+  //     ].timeframes.daily.previous.toString()}hrs`;
 
-    // Check if time period is weekly
-    case "weekly":
-      currentHours!.textContent = `${data[
-        index
-      ].timeframes.weekly.current.toString()}hrs`;
-      previousHours!.textContent = `Last week - ${data[
-        index
-      ].timeframes.weekly.previous.toString()}`;
-      break;
+  //     break;
 
-    // Check if time period is monthly
-    case "monthly":
-      currentHours!.textContent = `${data[
-        index
-      ].timeframes.monthly.current.toString()}hrs`;
-      previousHours!.textContent = `Last week - ${data[
-        index
-      ].timeframes.monthly.previous.toString()}`;
-      break;
-  }
+  //   // Check if time period is weekly
+  //   case "weekly":
+  //     currentHours!.textContent = `${data[
+  //       index
+  //     ].timeframes.weekly.current.toString()}hrs`;
+  //     previousHours!.textContent = `Last week - ${data[
+  //       index
+  //     ].timeframes.weekly.previous.toString()}hrs`;
+  //     break;
+
+  //   // Check if time period is monthly
+  //   case "monthly":
+  //     currentHours!.textContent = `${data[
+  //       index
+  //     ].timeframes.monthly.current.toString()}hrs`;
+  //     previousHours!.textContent = `Last week - ${data[
+  //       index
+  //     ].timeframes.monthly.previous.toString()}hrs`;
+  //     break;
+  // }
 };
 
 // Function to place all the cards using a for loop
