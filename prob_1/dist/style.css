@@ -18,7 +18,7 @@ body {
   background-color: #1d204b;
   display: flex;
   flex-direction: column;
-  height: 27rem;
+  height: 28.5rem;
   width: 15rem;
   border-radius: 5%;
   color: white;
@@ -165,6 +165,6 @@ body {
 @media (max-width: 500px) {
   .container {
     flex-direction: column;
-    height: 280vh;
+    height: 290vh;
   }
 }
